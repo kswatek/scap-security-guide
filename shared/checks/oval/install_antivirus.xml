@@ -8,8 +8,9 @@
       </affected>
       <description>Antivirus software should be installed.</description>
     </metadata>
-    <criteria comment="Antivirus is not being used or conditions are met">
+    <criteria comment="Antivirus is not being used or conditions are met" operator="OR">
       <extend_definition comment="McAfee A/V Installed" definition_ref="install_mcafee_antivirus" />
+      <extend_definition comment="Symantec A/V Installed" definition_ref="install_symantec_antivirus" />
     </criteria>
   </definition>
 
