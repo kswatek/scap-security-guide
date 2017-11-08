@@ -1,0 +1,45 @@
+<def-group>
+  <definition class="compliance" id="install_symantec_antivirus" version="1">
+    <metadata>
+      <title>Package SAV Installed</title>
+      <affected family="unix">
+        <platform>multi_platform_all</platform>
+      </affected>
+      <description>Symantec Antivirus software should be installed.</description>
+    </metadata>
+    <criteria comment="Antivirus is not being used or conditions are met" operator="AND">
+      <criterion comment="Symantec AntiVirus package is installed" test_ref="test_sav_installed"/>
+      <criterion comment="Symantec A/V User Interface package installed" test_ref="test_savui_installed"/>
+      <criteria operator="OR">
+        <criterion comment="Symantec A/V AutoProtect 32bit package installed" test_ref="test_savap_installed"/>
+        <criterion comment="Symantec A/V AutoProtect 64bit package installed" test_ref="test_savap-x64_installed"/>
+      </criteria>
+    </criteria>
+  </definition>
+
+  <linux:rpminfo_test check="all" check_existence="all_exist" id="test_sav_installed" version="1" comment="AntiVirus package is installed">
+    <linux:object object_ref="obj_sav_installed" />
+  </linux:rpminfo_test>
+  <linux:rpminfo_test check="all" check_existence="all_exist" id="test_savap_installed" version="1" comment="AutoProtect package is installed">
+    <linux:object object_ref="obj_savap_installed"/>
+  </linux:rpminfo_test>
+  <linux:rpminfo_test check="all" check_existence="all_exist" id="test_savap-x64_installed" version="1" comment="AutoProtect package is installed">
+    <linux:object object_ref="obj_savap-x64_installed"/>
+  </linux:rpminfo_test>
+  <linux:rpminfo_test check="all" check_existence="all_exist" id="test_savui_installed" version="1" comment="User Interface package is installed">
+    <linux:object object_ref="obj_savui_installed"/>
+  </linux:rpminfo_test>
+
+  <linux:rpminfo_object id="obj_sav_installed" version="1">
+    <linux:name>sav</linux:name>
+  </linux:rpminfo_object>
+  <linux:rpminfo_object id="obj_savap_installed" version="1">
+    <linux:name>savap</linux:name>
+  </linux:rpminfo_object>
+  <linux:rpminfo_object id="obj_savap-x64_installed" version="1">
+    <linux:name>savap-x64</linux:name>
+  </linux:rpminfo_object>
+  <linux:rpminfo_object id="obj_savui_installed" version="1">
+    <linux:name>savui</linux:name>
+  </linux:rpminfo_object>
+</def-group>
